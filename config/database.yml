@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  url: <%= ENV["DATABASE_URL"] || "postgres://messaging_user:messaging_password@127.0.0.1:55432/messaging_service" %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  url: <%= ENV["DATABASE_TEST_URL"] || ENV["DATABASE_URL"] || "postgres://messaging_user:messaging_password@127.0.0.1:55432/messaging_service_test" %>
+
+production:
+  <<: *default
