@@ -1,6 +1,6 @@
 # Backend Interview Project
 
-This is a scaffold for Hatch's backend interview project. It includes basic setup for development, testing, and deployment.
+This is a scaffold for Hatch's backend interview project. It includes basic setup for development, testing, and deployment. The service is built with Rails 8 (API-only).
 
 ## Guidelines
 

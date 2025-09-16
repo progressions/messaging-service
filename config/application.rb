@@ -11,7 +11,7 @@ module MessagingService
     # Require gems listed in Gemfile per environment
     Bundler.require(*Rails.groups)
 
-    config.load_defaults 7.1
+    config.load_defaults 8.0
     config.api_only = true
 
     # Timezone/locale defaults can be set here if needed

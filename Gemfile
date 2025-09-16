@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 7.1"
+gem "rails", "~> 8.0"
 gem "pg", ">= 1.4"
 gem "puma", ">= 6.0"
 gem "rack-cors", ">= 2.0"

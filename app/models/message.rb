@@ -1,8 +1,8 @@
 class Message < ApplicationRecord
   belongs_to :conversation
 
-  enum direction: { outbound: "outbound", inbound: "inbound" }
-  enum status: { queued: "queued", sent: "sent", failed: "failed" }
+  enum :direction, { outbound: "outbound", inbound: "inbound" }
+  enum :status, { queued: "queued", sent: "sent", failed: "failed" }
 
   KINDS = %w[sms mms email].freeze
 

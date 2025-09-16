@@ -6,7 +6,7 @@
 - Database is Postgres from `docker-compose.yml`. Configure via `DATABASE_URL` or `config/database.yml`.
 
 ## Build, Test, and Development Commands
-- `bundle install` — Install gems.
+- `bundle install` — Install gems (Rails 8).
 - `make setup` — Start Postgres container.
 - `rails db:prepare` — Create, migrate, and seed (honors `RAILS_ENV`).
 - `make run` — `./bin/start.sh` should run `bundle exec rails s -p 8080 -b 0.0.0.0`.

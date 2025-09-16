@@ -42,10 +42,10 @@ module Api
 
     def set_pagination_headers(total_count:, page:, per_page:)
       total_pages = (total_count.to_f / per_page).ceil
-      response.set_header('X-Total-Count', total_count)
-      response.set_header('X-Total-Pages', total_pages)
-      response.set_header('X-Page', page)
-      response.set_header('X-Per-Page', per_page)
+      response.set_header('X-Total-Count', total_count.to_s)
+      response.set_header('X-Total-Pages', total_pages.to_s)
+      response.set_header('X-Page', page.to_s)
+      response.set_header('X-Per-Page', per_page.to_s)
     end
 
     def set_link_header(base_scope:, page:, per_page:)

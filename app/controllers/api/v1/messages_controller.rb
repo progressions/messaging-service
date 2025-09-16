@@ -4,15 +4,11 @@ module Api
     def sms
       m = create_message_for(kind: sms_params[:type] || "sms", attrs: sms_params, direction: "outbound")
       render json: m, serializer: ::MessageSerializer, status: :accepted
-    rescue => e
-      render json: { error: e.message }, status: :unprocessable_entity
     end
 
     def email
       m = create_message_for(kind: "email", attrs: email_params, direction: "outbound")
       render json: m, serializer: ::MessageSerializer, status: :accepted
-    rescue => e
-      render json: { error: e.message }, status: :unprocessable_entity
     end
 
     private
@@ -22,6 +18,12 @@ module Api
       to = attrs[:to]
       conv = Conversation.find_or_create_by_participants(from, to)
       sent_at = parse_time(attrs[:timestamp])
+      # If attachments param exists but isn't an array, raise a validation error (422)
+      if params.key?(:attachments) && !params[:attachments].nil? && !params[:attachments].is_a?(Array)
+        invalid = Message.new
+        invalid.errors.add(:attachments, 'must be an array of strings')
+        raise ActiveRecord::RecordInvalid, invalid
+      end
       attachments = attrs[:attachments].presence || []
 
       provider_id = attrs[:messaging_provider_id] || attrs[:xillio_id]
